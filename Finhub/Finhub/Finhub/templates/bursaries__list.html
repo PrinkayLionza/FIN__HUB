@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block title%} Bursaries {% endblock %} {% block
+content%}
+<div class="bursaries__wrapper">
+  <p class="page__title">Latest Bursaries</p>
+  <p>See the list of all posted bursaries.</p>
+
+  <div class="bursaries__content">
+    {% if bursaries %} {% for bursary in bursaries %}
+    <div class="bursary__wrapper">
+      <!--Bursary Header-->
+      <div class="bursary__wrapper__header">
+        <div class="bursary__wrapper__header__cover__image">
+          <img
+            src="{{url_for('static', filename='uploads/logos/' + bursary.company_logo)}}"
+            alt=""
+          />
+        </div>
+        <p class="bursary__wrapper__header__title">
+          <b>{{bursary.company}}:</b> {{bursary.title}}.
+        </p>
+      </div>
+      <!--Bursary body-->
+      <div class="bursary__wrapper__body">
+        <div class="bursary__details">
+          <p class="bursary__description">{{bursary.description}}</p>
+          <p class="bursary__closing__date bursary__status status__valid">
+            Closing Date :
+            <span>{{bursary.closing_date.strftime('%Y-%m-%d')}}</span>
+          </p>
+
+          {% if bursary.number_of_applicants <= 1 %}
+          <p>
+            <b>{{bursary.number_of_applicants}}</b> applicant applied for this
+            bursary.
+          </p>
+          {% else %}
+          <p>
+            <b>{{bursary.number_of_applicants}}</b> applicants applied for this
+            bursary.
+          </p>
+
+          {% endif %}
+        </div>
+        <div class="bursary__action">
+          <a href="/bursary-details/{{bursary.id}}">See More</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <p>There are no bursaries at a moment.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

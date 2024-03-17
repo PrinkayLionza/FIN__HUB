@@ -1,0 +1,55 @@
+@media (max-width: 1360px) {
+  .applications__table__wrapper table {
+    width: 1200px;
+  }
+  .applications__table__wrapper {
+    overflow-x: scroll;
+  }
+}
+@media (max-width: 1300px) {
+  .finhub__summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 1120px) {
+  .bursary__table__wrapper table {
+    width: 800px;
+  }
+  .bursary__table__wrapper {
+    overflow-x: scroll;
+  }
+}
+@media (max-width: 1070px) {
+  .dashboard__content .tab__group {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .finhub__summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .finhub__users__table {
+    overflow-x: scroll;
+  }
+  .finhub__users__table table {
+    width: 600px;
+  }
+}
+@media (max-width: 850px) {
+  .dashboard__content .tab__group {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+@media (max-width: 800px) {
+  .admin__wrapper__content nav ul {
+    display: none !important;
+  }
+}
+@media (max-width: 730px) {
+  .finhub__summary {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

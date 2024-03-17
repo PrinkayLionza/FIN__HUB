@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block title%} {{details.company}} {{details.title}}
+{% endblock %} {% block content%}
+<div class="bursaries__wrapper">
+  <p class="page__title">Bursary Details</p>
+  <p>
+    All the details about
+    <span>"{{details.company}} : {{details.title}}"</span>.
+  </p>
+
+  <div class="bursaries__content">
+    <div class="bursary__header">
+      <div class="bursary__cover__image">
+        <img
+          src="{{url_for('static', filename='uploads/logos/' + details.company_logo)}}"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="bursary__details__group">
+      <p class="page__title">Bursary Details</p>
+      <div class="bursary__grid">
+        <p class="bursary__title">Company</p>
+        <p class="bursary__value">: {{details.company}}</p>
+      </div>
+      <div class="bursary__grid">
+        <p class="bursary__title">Closing Date</p>
+        <p class="bursary__value">
+          : {{details.closing_date.strftime('%Y-%m-%d')}}
+        </p>
+      </div>
+      <div class="bursary__grid">
+        <p class="bursary__title">Status</p>
+
+        {% if status == "Bursary Expired" %}
+        <p class="bursary__value">
+          : <span class="unsuccessful__status__text">{{status}}</span>
+        </p>
+        {% else %}
+        <p class="bursary__value">
+          : <span class="success__status__text">{{status}}</span>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="bursary__requrements">
+      <p class="page__title">Bursary Requirements</p>
+      <ul>
+        {% if details.certified_id_required %}
+        <li>Certified ID Copy</li>
+        {% endif %} {% if details.matric_required %}
+        <li>Certified Matric Certificate (60% + in Maths)</li>
+        {% endif %} {% if details.academic_required %}
+        <li>Academic Transcript</li>
+        {% endif %} {% if details.unemployment_affidavit %}
+        <li>Unemployment Affidavit</li>
+        {% endif %}
+
+        <li>
+          South African citizen who are between the ages of 18 & 35 years.
+        </li>
+      </ul>
+    </div>
+    <div class="bursary__action">
+      <a
+        href="/submit-application/{{details.reference_number}}"
+        class="btn__custom btn__primary"
+        >Apply For This Bursary</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %} Application
+Approval{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Application Approval</p>
+
+  <div class="custom__hr"></div>
+  <p>Do you want to approve this application ?</p>
+  <div class="dashboard__content">
+    <div class="form__horizontal">
+      <form method="post">
+        <input type="hidden" name="application_id" value="{{application.id}}" />
+        <button type="submit" class="btn__custom btn__success m__0">
+          Approve Application
+          <i class="fa fa-check-circle btn__icon__right"></i>
+        </button>
+      </form>
+      <a href="/manage-applications" class="btn__custom btn__danger m__0">
+        Cancel Request
+        <i class="fa fa-times-circle btn__icon__right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

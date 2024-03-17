@@ -1,0 +1,84 @@
+{% extends "profile.html" %} {% block profile_content%}
+<!--Profile incomplete Warning-->
+
+{% if user_profile.address == None or user_profile.date_of_birth == None or
+user_profile.gender == None %}
+<div class="profile__incomplete__warning">
+  <p>
+    <b>NB: </b>Please complete the following fields on your profile
+    <b>
+      "{% if user_profile.gender == None %} Gender {% endif %} {% if
+      user_profile.date_of_birth == None or user_profile.date_of_birth == "" %}
+      Date Of Birth {% endif %} {% if user_profile.address == None or
+      user_profile.address == "" %} ,Address {% endif %}"
+    </b>
+    as it may lead to the rejection of your applications.
+  </p>
+</div>
+
+{% endif %}
+
+<!--Profile incomplete Warning Ends-->
+<div class="profile__card">
+  <div class="grid__50">
+    <div class="profile__user__details">
+      <p class="page__title">Profile Details</p>
+      <div class="profile__data__group">
+        <p class="profile__data__label">Student ID</p>
+        <p class="profile__data__value">@{{user_profile.student_number}}</p>
+      </div>
+      <div class="profile__data__group">
+        <p class="profile__data__label">Email Address</p>
+        <p class="profile__data__value">{{user.email}}</p>
+      </div>
+      <div class="profile__data__group">
+        <p class="profile__data__label">First name</p>
+        <p class="profile__data__value">{{user.first_name}}</p>
+      </div>
+      <div class="profile__data__group">
+        <p class="profile__data__label">Last name</p>
+        <p class="profile__data__value">{{user.last_name}}</p>
+      </div>
+      <div class="profile__data__group">
+        <p class="profile__data__label">Gender</p>
+
+        {% if user_profile.gender %}
+        <p class="profile__data__value">{{user_profile.gender}}</p>
+        {% else %}
+        <p class="profile__data__value">Not Specified</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="profile__user__password__manager">
+      <p class="page__title">Change Password</p>
+      <form action="/change-password" method="post">
+        <div class="form__group">
+          <label for="password"
+            >Current Password <span class="required">*</span></label
+          >
+          <input
+            type="password"
+            name="current_password"
+            id="password"
+            placeholder="current_password here"
+          />
+        </div>
+        <div class="form__group">
+          <label for="new_password"
+            >New Password <span class="required">*</span></label
+          >
+          <input
+            type="password"
+            name="new_password"
+            id="new_password"
+            placeholder="new_password here"
+          />
+        </div>
+        <button type="submit" class="btn__custom btn__success">
+          Save Changes <i class="fa fa-check-circle btn__icon__right"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}

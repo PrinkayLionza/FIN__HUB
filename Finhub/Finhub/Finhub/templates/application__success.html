@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block title%} Application Success {% endblock %} {%
+block content%}
+<div class="bursaries__wrapper">
+  <p class="page__title">Application Success</p>
+  <div class="application__success__wrapper">
+    <i class="fa fa-check-circle success__icon"></i>
+    <p>Your application was successfully submitted with 0 errors.</p>
+    <a href="/my-applications" class="btn__custom btn__success"
+      >View Applications <i class="fa fa-eye btn__icon__right"></i
+    ></a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %} {% block title%} Application Tracking {% endblock %}
+{% block content%}
+<div class="my_application_wrapper">
+  <p class="page__title">
+    Applcation For {{bursary.company}} : {{bursary.title}}
+  </p>
+
+  <div class="my_applications__content">
+    <div class="application__data__group">
+      <p class="application__data__label">Application Date</p>
+      <p class="application__data__value">
+        : {{application.application_date.strftime('%Y-%m-%d')}}
+      </p>
+    </div>
+    <div class="application__data__group">
+      <p class="application__data__label">Status</p>
+      <p class="application__data__value">
+        : {{application.application_status}}
+      </p>
+    </div>
+    <!-- Tracking Progress-->
+    <div class="tracking__progress__wrapper">
+      <div class="tracking__circle circle__completed">
+        <i class="fa fa-user-check"></i>
+      </div>
+      <div class="tracking__arrow circle__completed">
+        <i class="fa fa-arrow-right-long"></i>
+      </div>
+
+      {% if application.on_review %}
+      <div class="tracking__circle circle__completed">
+        <i class="fa fa-book-reader"></i>
+      </div>
+      <div class="tracking__arrow circle__completed">
+        <i class="fa fa-arrow-right-long"></i>
+      </div>
+      {% else %}
+      <div class="tracking__circle">
+        <i class="fa fa-book-reader"></i>
+      </div>
+      <div class="tracking__arrow">
+        <i class="fa fa-arrow-right-long"></i>
+      </div>
+      {% endif %} {% if application.is_successful %}
+      <div class="tracking__circle circle__completed">
+        <i class="fa fa-check"></i>
+      </div>
+      {% elif application.is_rejected %}
+      <div class="tracking__circle circle__rejected">
+        <i class="fa fa-times"></i>
+      </div>
+      {% else %}
+      <div class="tracking__circle">
+        <i class="fa fa-check"></i>
+      </div>
+      {% endif %}
+    </div>
+    <!--Tracking Keys-->
+    <p class="keys__title">Color Keys</p>
+    <div class="tracking__keys color__keys mb__4">
+      <div class="key">
+        <div class="box box__pending"></div>
+        <p>Pending</p>
+      </div>
+      <div class="key">
+        <div class="box box__completed"></div>
+        <p>Completed</p>
+      </div>
+      <div class="key">
+        <div class="box box__rejected"></div>
+        <p>Rejected</p>
+      </div>
+    </div>
+    <p class="keys__title">Tracking Keys</p>
+    <div class="tracking__keys status__tracking__keys">
+      <div class="key">
+        <i class="fa fa-user-check"></i>
+        <p>- Submitted</p>
+      </div>
+      <div class="key">
+        <i class="fa fa-book-reader"></i>
+        <p>- Documents Review</p>
+      </div>
+      <div class="key">
+        <i class="fa fa-check"></i>
+        <p>- Application Successful</p>
+      </div>
+      <div class="key">
+        <i class="fa fa-times"></i>
+        <p>- Application Unsuccessful</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

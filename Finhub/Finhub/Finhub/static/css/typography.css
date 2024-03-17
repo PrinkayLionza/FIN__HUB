@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Titillium";
+  src: url(../fonts/TitilliumWeb-Regular.ttf);
+}
+@font-face {
+  font-family: "Titillium Bold";
+  src: url(../fonts/TitilliumWeb-SemiBold.ttf);
+}
+p,
+a,
+input,
+::placeholder,
+small,
+span,
+label,
+button,
+ul li,
+::-webkit-file-upload-button,
+textarea {
+  font-family: "Titillium", monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Titillium Bold", monospace;
+}

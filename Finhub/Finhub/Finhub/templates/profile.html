@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title%} Profile {% endblock %} {% block
+content%}
+<div class="profile__wrapper">
+  <p class="page__title">My Profile</p>
+
+  <div class="profile__content">
+    <div class="profile__content__header">
+      <p class="user__greeting">
+        Hello,
+        <b
+          ><a class="text-uppercase text__link" href="/profile"
+            >{{user.first_name}} {{user.last_name}}
+          </a></b
+        >
+      </p>
+      <a href="/update-user-details" class="btn__custom btn__primary"
+        >Update Details <i class="fa fa-edit btn__icon__right"></i
+      ></a>
+    </div>
+    {% block profile_content %} {% endblock %}
+  </div>
+</div>
+{% endblock %}

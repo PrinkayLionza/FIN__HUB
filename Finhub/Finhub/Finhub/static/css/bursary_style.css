@@ -1,0 +1,132 @@
+.bursaries__content {
+  margin-top: 10px;
+  border: 1px solid var(--lightBorder);
+  border-radius: var(--borderRadius);
+  padding: 14px;
+}
+.bursaries__content .bursary__wrapper {
+  padding-bottom: 6px;
+}
+.bursaries__content .bursary__wrapper:not(:last-child) {
+  border-bottom: 1px solid var(--lightBorder);
+}
+.bursaries__content .bursary__wrapper:not(:first-child) {
+  padding-top: 14px;
+}
+.bursaries__content .bursary__wrapper .bursary__wrapper__header {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.bursaries__content
+  .bursary__wrapper
+  .bursary__wrapper__header
+  .bursary__wrapper__header__title {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+}
+.bursaries__content
+  .bursary__wrapper
+  .bursary__wrapper__header
+  .bursary__wrapper__header__cover__image {
+  height: 50px;
+  width: 100px;
+}
+.bursaries__content
+  .bursary__wrapper
+  .bursary__wrapper__header
+  .bursary__wrapper__header__cover__image
+  img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.bursaries__content .bursary__wrapper .bursary__wrapper__body {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  gap: 14px;
+  justify-content: space-between;
+}
+.bursaries__content
+  .bursary__wrapper
+  .bursary__wrapper__body
+  .bursary__details
+  .bursary__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  border-radius: var(--borderRadius);
+  padding: 1px 6px;
+  margin: 6px 0;
+}
+.status__valid {
+  background: var(--successColorTran);
+  border: 1px solid var(--successBorderTrans);
+  color: var(--dark);
+}
+.status__invalid {
+  background: var(--dangerColorTran);
+  border: 1px solid var(--dangerBorderTrans);
+  color: var(--dark);
+}
+.bursaries__content .bursary__wrapper .bursary__wrapper__body .bursary__action {
+  display: flex;
+  justify-content: flex-end;
+}
+.bursaries__content
+  .bursary__wrapper
+  .bursary__wrapper__body
+  .bursary__details
+  .bursary__closing__date {
+  font-size: 15px;
+  margin: 6px 0;
+}
+
+.bursaries__content
+  .bursary__wrapper
+  .bursary__wrapper__body
+  .bursary__action
+  a {
+  color: var(--primary);
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.bursaries__content .bursary__header .bursary__cover__image {
+  height: 50px;
+  width: 120px;
+  margin-bottom: 16px;
+}
+.bursaries__content .bursary__header .bursary__cover__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.bursary__details__group {
+  margin-bottom: 40px;
+}
+.bursary__grid {
+  display: grid;
+  grid-template-columns: 2fr 6fr;
+  gap: 6px;
+}
+.bursary__requrements ul {
+  list-style: circle;
+  margin-left: 20px;
+}
+.bursary__requrements {
+  margin-bottom: 30px;
+}
+.bursary__application__wrapper {
+  margin-top: 10px;
+}
+.application__success__wrapper {
+  margin-top: 10px;
+}
+.application__success__wrapper .success__icon {
+  font-size: 30px;
+  color: var(--successColor);
+  margin-bottom: 6px;
+}

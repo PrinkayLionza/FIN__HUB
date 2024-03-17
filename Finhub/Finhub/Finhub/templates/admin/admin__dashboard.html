@@ -1,0 +1,82 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %}Dashboard{%
+endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Hello Admin</p>
+  <div class="custom__hr"></div>
+  <p><b>Finhub</b> Dashboard Summary</p>
+  <!--Summary-->
+  <div class="finhub__summary">
+    <div class="finhub__summary__card">
+      <div class="summary__card__icon">
+        <i class="fa fa-users"></i>
+      </div>
+      <div class="summary__card__content">
+        <h1>{{users_count}}</h1>
+
+        {% if users_count <= 1 %}
+        <p>User</p>
+        {% else %}
+        <p>Users</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="finhub__summary__card">
+      <div class="summary__card__icon">
+        <i class="fa fa-clipboard"></i>
+      </div>
+      <div class="summary__card__content">
+        <h1>{{apps_count}}</h1>
+
+        {% if apps_count <= 1 %}
+        <p>Pending Application</p>
+        {% else %}
+        <p>Pending Applications</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="finhub__summary__card">
+      <div class="summary__card__icon">
+        <i class="fa fa-times-circle"></i>
+      </div>
+      <div class="summary__card__content">
+        <h1>{{apps_rejected_count}}</h1>
+
+        {% if apps_rejected_count <= 1 %}
+        <p>Rejected Application</p>
+        {% else %}
+        <p>Rejected Applications</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="finhub__summary__card">
+      <div class="summary__card__icon">
+        <i class="fa fa-check-circle"></i>
+      </div>
+      <div class="summary__card__content">
+        <h1>{{apps_success_count}}</h1>
+
+        {% if apps_success_count <= 1 %}
+        <p>Successful Application</p>
+        {% else %}
+        <p>Successful Applications</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="finhub__summary__card">
+      <div class="summary__card__icon">
+        <i class="fa fa-list"></i>
+      </div>
+      <div class="summary__card__content">
+        <h1>{{bursary_count}}</h1>
+
+        {% if bursary_count <= 1 %}
+        <p>Bursary</p>
+        {% else %}
+        <p>Bursaries</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="custom__hr"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,156 @@
+@media (max-width: 1000px) {
+  header,
+  .main__content,
+  footer,
+  .mobile__menu,
+  .alert {
+    padding-inline: 90px !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .profile__card .user__details__manager .grid__50 {
+    grid-template-columns: 1fr !important;
+  }
+  .my_applications__content .application__data__group {
+    grid-template-columns: 4fr 5fr !important;
+  }
+}
+
+@media (max-width: 875px) {
+  .status__tracking__keys {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+}
+
+@media (max-width: 840px) {
+  .bursary__wrapper .bursary__wrapper__body {
+    grid-template-columns: 1fr !important;
+  }
+  .footer__wrapper {
+    flex-direction: column;
+  }
+  .bursaries__content
+    .bursary__wrapper
+    .bursary__wrapper__body
+    .bursary__action {
+    justify-content: flex-start !important;
+  }
+  .bursaries__content .bursary__wrapper .bursary__wrapper__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .profile__card .grid__50 {
+    grid-template-columns: 1fr !important;
+  }
+  .profile__card
+    .grid__50
+    .profile__user__password__manager
+    .form__group
+    input {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+}
+
+@media (max-width: 700px) {
+  header,
+  .main__content,
+  footer,
+  .mobile__menu,
+  .alert {
+    padding-inline: 50px !important;
+  }
+  .profile__card
+    .user__details__manager
+    .grid__50
+    .grid__col
+    .form__group
+    input,
+  .user__details__manager .grid__50 .grid__col .form__group select {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  header,
+  .main__content,
+  footer,
+  .mobile__menu,
+  .alert {
+    padding-inline: 25px !important;
+  }
+}
+
+@media (max-width: 550px) {
+  header .desktop__links {
+    display: none;
+  }
+  .nav__bar__toggler {
+    display: block !important;
+  }
+}
+@media (max-width: 500px) {
+  .profile__content .profile__content__header {
+    flex-direction: column;
+  }
+  .tracking__progress__wrapper {
+    gap: 0;
+    justify-content: space-between;
+  }
+  .bursary__application__wrapper form .form__group input,
+  .bursary__application__wrapper form .form__group textarea {
+    min-width: auto;
+    width: 100%;
+  }
+  .form__group input {
+    min-width: auto;
+    width: 100%;
+  }
+  .footer__wrapper {
+    align-items: flex-start !important;
+    justify-content: center;
+  }
+  .subscriber__form {
+    width: 100% !important;
+  }
+  .subscriber__form form {
+    flex-direction: column;
+    width: 100% !important;
+  }
+  .subscriber__form form input {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .bursary__details__group .bursary__grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .my_application_card {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 10px;
+  }
+  .my_application_card .application__details {
+    border-bottom: 1px solid var(--lightBorder);
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .tracking__circle {
+    width: 50px;
+    height: 50px;
+  }
+  .my_applications__content .application__data__group {
+    grid-template-columns: 2fr 3fr !important;
+  }
+}
+@media (max-width: 350px) {
+  .color__keys {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}

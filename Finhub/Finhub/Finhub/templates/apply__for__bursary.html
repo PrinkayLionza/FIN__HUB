@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block title%} Submit Application {% endblock %} {%
+block content%}
+<div class="bursaries__wrapper">
+  <p class="page__title">Apply For This Bursary</p>
+  <div class="bursary__grid">
+    <p class="bursary__title">Bursary Reference</p>
+    <p class="bursary__value">: <b>#</b>{{bursary.reference_number}}</p>
+  </div>
+  <div class="bursary__application__wrapper">
+    <form
+      method="post"
+      action="/submit-application/{{bursary.reference_number}}"
+      enctype="multipart/form-data"
+    >
+      <input type="hidden" name="ref" value="{{bursary.reference_number}}" />
+      {% if bursary.certified_id_required %}
+      <div class="form__group">
+        <label for="id-copy"
+          >Certified ID <span class="required">*</span></label
+        >
+        <input type="file" required accept=".pdf" name="id_copy" id="id-copy" />
+      </div>
+      {% endif %} {% if bursary.matric_required %}
+      <div class="form__group">
+        <label for="matric"
+          >Certified Matric Certificate <span class="required">*</span></label
+        >
+        <input
+          type="file"
+          accept=".pdf"
+          name="matric_certificate"
+          id="matric"
+          required
+        />
+      </div>
+      {% endif %} {% if bursary.academic_required %}
+      <div class="form__group">
+        <label for="academic_transcript"
+          >Academic Transcript <span class="required">*</span></label
+        >
+        <input
+          type="file"
+          name="academic_transcript"
+          id="academic_transcript"
+          accept=".pdf"
+          required
+        />
+      </div>
+      {% endif %} {% if bursary.unemployment_affidavit %}
+      <div class="form__group">
+        <label for="affidavit"
+          >Employment Affidavit <span class="required">*</span></label
+        >
+        <input
+          type="file"
+          name="affidavit"
+          id="affidavit"
+          accept=".pdf"
+          required
+        />
+      </div>
+      {% endif %}
+
+      <div class="form__group">
+        <label for="cover-letter"
+          >Cover Letter <span class="required">*</span></label
+        >
+        <textarea
+          name="cover_letter"
+          required
+          id="cover-letter"
+          placeholder="Write a cover letter and tell us why we should consider you."
+        ></textarea>
+      </div>
+      <div class="form__group">
+        <button type="submit" class="btn__custom btn__success">
+          Submit Application <i class="fa fa-check-circle btn__icon__right"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

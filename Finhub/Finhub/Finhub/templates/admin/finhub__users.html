@@ -1,0 +1,45 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %}Finhub Users{%
+endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Finhub users</p>
+
+  <div class="dashboard__content">
+    <div class="finhub__users__table">
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if users %} {% for user in users %}
+          <tr>
+            <td>{{user.email}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>
+              <a
+                href="/finhub/users/details/{{user.id}}"
+                class="btn__custom btn__sm btn__dark"
+              >
+                User Details
+                <i class="fa fa-eye btn__icon__right"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %} {% else %}
+          <tr>
+            <td colspan="4">
+              <p>No Data Found</p>
+            </td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

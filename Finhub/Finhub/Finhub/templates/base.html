@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finhub - {% block title%} {{ title }} {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename =
+    'css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename =
+    'css/all.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename =
+  'css/media.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename =
+      'img/favicon.ico') }}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="/">
+        <img src="{{url_for('static', filename='img/finhub.png')}}" alt="" />
+      </a>
+      <ul class="desktop__links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/bursaries">Bursaries</a></li>
+
+        {% if user.is_authenticated %}
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/my-applications">My Applications</a></li>
+        <li><a href="/sign-out">Logout</a></li>
+        {% else %}
+        <li><a href="/login">Login</a></li>
+        {% endif %}
+      </ul>
+      <!--Navbar Toggler-->
+      <div id="navTogglerBtn" class="nav__bar__toggler">
+        <div class="bars"></div>
+        <div class="bars"></div>
+        <div class="bars"></div>
+      </div>
+      <!--Navbar Toggler Ends-->
+      <!--Main Alert-->
+      <div class="alerts__wrapper" id="alerts__wrapper">
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %} {% if category ==
+        'error' %}
+        <div class="alert alert__error">
+          <div class="alert__content">
+            <i class="fa fa-exclamation-triangle"></i>
+            <p>{{message}}</p>
+          </div>
+          <button id="alertCloseBtn" class="btn__custom close__alert__btn">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+        {% else %}
+        <div class="alert alert__success">
+          <div class="alert__content">
+            <i class="fa fa-check-circle"></i>
+            <p>{{message}}</p>
+          </div>
+          <button id="alertCloseBtn" class="btn__custom close__alert__btn">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
+      </div>
+      <!-- Main Alert Ends-->
+    </header>
+    <div class="main__content">
+      <!--Mobile Menu-->
+      <div id="mobileMenu" class="mobile__menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/bursaries">Bursaries</a></li>
+
+          {% if user.is_authenticated %}
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/my-applications">My Applications</a></li>
+          <li><a href="/sign-out">Logout</a></li>
+          {% else %}
+          <li><a href="/login">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <!--Mobile Menu Ends-->
+      {% block content%} {% endblock %}
+    </div>
+    <!--Footer-->
+    <div class="custom__hr"></div>
+    <footer>
+      <div class="footer__wrapper">
+        <a href="/" class="company__logo">
+          <img
+            src="{{url_for('static', filename='img/finhub.png')}}"
+            width="100"
+            alt=""
+          />
+        </a>
+        <div class="subscriber__form">
+          <p>Subcribe our newsletter</p>
+          <form action="">
+            <div class="form__group">
+              <input type="email" placeholder="Email Address" />
+            </div>
+            <div class="form__group">
+              <button type="submit" class="btn__custom btn__danger">
+                Subscribe
+                <i class="fa fa-hand-pointer btn__icon__right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="custom__hr"></div>
+      <p>
+        All Right Reserved &copy; <span id="current-year"></span> Fin<span
+          class="logo__span"
+          >Hub</span
+        >
+      </p>
+    </footer>
+    <!--Footer-->
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/all.min.js')}}"></script>
+
+    <script>
+      const date = new Date();
+      const closeAlertBtn = document.getElementById("alertCloseBtn");
+      const alertWrapper = document.getElementById("alerts__wrapper");
+      const navTogglerBtn = document.getElementById("navTogglerBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      navTogglerBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("show__mobile__menu");
+      });
+
+      document.getElementById("current-year").innerText = date.getFullYear();
+      if (closeAlertBtn != null) {
+        closeAlertBtn.addEventListener("click", () => {
+          if (alertWrapper != null) {
+            alertWrapper.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

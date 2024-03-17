@@ -1,0 +1,52 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %}Manage
+Applications{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Current Applications</p>
+
+  <div class="dashboard__content">
+    <div class="applications__table__wrapper">
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th>Applied on</th>
+            <th>Bursary Ref</th>
+            <th>Status</th>
+            <th>ID Doc</th>
+            <th>Matric Cert</th>
+            <th>Academic Transcript</th>
+            <th>Affidavit</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if applications_list %} {% for application in applications_list %}
+          <tr>
+            <td>{{application.application_date.strftime('%Y-%m-%d')}}</td>
+            <td><b>#</b>{{application.app_reference_number}}</td>
+            <td>{{application.application_status}}</td>
+            <td>{{application.id_document}}</td>
+            <td>{{application.matric_certificate}}</td>
+            <td>{{application.academic_transcript}}</td>
+            <td>{{application.unemployed_affidavit}}</td>
+            <td>
+              <a
+                href="/application/details/{{application.id}}"
+                class="btn__custom btn__sm btn__dark"
+              >
+                Manage
+              </a>
+            </td>
+          </tr>
+          {% endfor %} {% else %}
+          <tr>
+            <td colspan="8">
+              <p>No Data Found</p>
+            </td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

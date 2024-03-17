@@ -1,0 +1,65 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %} Documents
+Review{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Application Documents</p>
+
+  <div class="custom__hr"></div>
+  <div class="dashboard__content">
+    <div class="applicant__details">
+      <p class="page__title mb__2 text__light">
+        {{application_user.first_name}} {{application_user.last_name}}'s
+        Documents For
+        <b>"{{bursary.company}} : {{bursary.title}}"</b> Application
+      </p>
+    </div>
+    <div class="documents__wrapper">
+      {% if application.id_document and application.id_document != "Not
+      Available" %}
+      <p>
+        <i class="fa fa-check-circle list__icon"></i>ID Document (<a
+          href="/static/uploads/{{application_profile.student_number}} Docs/{{application.app_reference_number}}/{{application.id_document}}"
+          target="_blank"
+          >View or Download</a
+        >)
+      </p>
+      {% endif %} {% if application.matric_certificate and
+      application.matric_certificate != "Not Available" %}
+      <p>
+        <i class="fa fa-check-circle list__icon"></i>Matric Certificate (<a
+          href="/static/uploads/{{application_profile.student_number}} Docs/{{application.app_reference_number}}/{{application.matric_certificate}}"
+          target="_blank"
+          >View or Download</a
+        >)
+      </p>
+      {% endif %} {% if application.academic_transcript and
+      application.academic_transcript != "Not Available" %}
+      <p>
+        <i class="fa fa-check-circle list__icon"></i>Academic Transcript (<a
+          href="/static/uploads/{{application_profile.student_number}} Docs/{{application.app_reference_number}}/{{application.academic_transcript}}"
+          target="_blank"
+          >View or Download</a
+        >)
+      </p>
+      {% endif %} {% if application.unemployed_affidavit and
+      application.unemployed_affidavit != "Not Available" %}
+      <p>
+        <i class="fa fa-check-circle list__icon"></i>Unemployment Affidavit (<a
+          href="/static/uploads/{{application_profile.student_number}} Docs/{{application.app_reference_number}}/{{application.unemployed_affidavit}}"
+          target="_blank"
+          >View or Download</a
+        >)
+      </p>
+      {% endif %}
+    </div>
+    <div class="custom__hr"></div>
+    <p>Confirm Review after checking all the documents.</p>
+    <form method="post" action="/confirm-review-application">
+      <input type="hidden" name="application_id" value="{{application.id}}" />
+      <button type="submit" class="btn__success btn__custom">
+        Confirm Documents Review
+        <i class="fa fa-check-circle btn__icon__right"></i>
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

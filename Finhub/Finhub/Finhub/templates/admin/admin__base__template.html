@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - {% block title %}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/all.min.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/admin.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/admin_media.css')}}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename =
+      'img/favicon.ico') }}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="side__bar" id="sideBarWrapper">
+      <div class="flex__center">
+        <div class="side__bar__toggler" id="sideBarTogglerBtn">
+          <i class="fa fa-bars"></i>
+        </div>
+      </div>
+      <div class="admin__avatar__wrapper">
+        <div class="admin__avatar">
+          <i class="fa fa-user-tie avatar"></i>
+        </div>
+      </div>
+      <div class="logo__wrapper">
+        <a href="/admin">
+          <img
+            width="150"
+            src="{{url_for('static', filename='img/finhub_text.png')}}"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="side__bar__links">
+        <ul>
+          <li>
+            <a href="/admin"
+              ><span class="side__bar__links__text">Dashboard</span>
+              <i class="fa fa-chart-bar"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/finhub/users"
+              ><span class="side__bar__links__text">Users</span>
+              <i class="far fa-user"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/manage-applications">
+              <span class="side__bar__links__text">Manage Applications</span>
+              <i class="fa fa-clipboard"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/manage-bursaries">
+              <span class="side__bar__links__text">Manage Bursaries</span>
+              <i class="fa fa-list"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#"
+              ><span class="side__bar__links__text">My Profile</span>
+              <i class="fa fa-user-tie"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="admin__wrapper__content">
+      <nav id="admin__nav">
+        <a href="/admin" class="admin__logo">
+          <img
+            width="90"
+            src="{{url_for('static', filename='img/finhub.png')}}"
+            alt=""
+          />
+        </a>
+        <div class="admin__nav">
+          <ul>
+            <li><a href="/admin">Home</a></li>
+            <li><a href="/manage-applications">Applications</a></li>
+            <li><a href="/manage-bursaries">Bursaries</a></li>
+          </ul>
+          <a href="/sign-out" class="btn__custom btn__primary"
+            >Sign Out <i class="fa fa-sign-out-alt btn__icon__right"></i
+          ></a>
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %} {% if category ==
+          'error' %}
+          <!--Alert Box-->
+          <div id="adminAlertbox" class="admin__alertbox alertbox__danger">
+            <div class="alert__container">
+              <div class="alertbox__icon">
+                <i class="fa fa-exclamation-triangle"></i>
+              </div>
+              <p>{{message}}</p>
+            </div>
+            <button
+              id="adminAlertCloseBtn"
+              class="btn__custom close__alert__btn"
+            >
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+          {% else %}
+          <!--Alert Box-->
+          <div id="adminAlertbox" class="admin__alertbox alertbox__success">
+            <div class="alert__container">
+              <div class="alertbox__icon">
+                <i class="fa fa-check-circle"></i>
+              </div>
+              <p>{{message}}</p>
+            </div>
+            <button
+              id="adminAlertCloseBtn"
+              class="btn__custom close__alert__btn"
+            >
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+          {% endif %} {% endfor %} {% endif %} {% endwith %}
+        </div>
+      </nav>
+      <div id="admin__main" class="admin__main">
+        {% block admin__content %} {% endblock %}
+      </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/all.min.css')}}"></script>
+    <script>
+      const adminAlertClose = document.getElementById("adminAlertCloseBtn");
+      const adminAlertWrapper = document.getElementById("adminAlertbox");
+      const sideBarTogglerBtn = document.getElementById("sideBarTogglerBtn");
+      const sideBarWrapper = document.getElementById("sideBarWrapper");
+      const adminNav = document.getElementById("admin__nav");
+      const adminMain = document.getElementById("admin__main");
+
+      sideBarTogglerBtn.addEventListener("click", () => {
+        sideBarWrapper.classList.toggle("side__bar__sm");
+        adminNav.classList.toggle("main__size");
+        adminMain.classList.toggle("main__size");
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth < 600) {
+          if (
+            !sideBarWrapper.classList.contains("side__bar__sm") ||
+            !adminNav.classList.contains("side__bar__sm") ||
+            !adminMain.classList.contains("side__bar__sm")
+          ) {
+            sideBarWrapper.classList.add("side__bar__sm");
+            adminNav.classList.add("main__size");
+            adminMain.classList.add("main__size");
+          }
+        } else if (window.innerWidth > 600) {
+          sideBarWrapper.classList.remove("side__bar__sm");
+          adminNav.classList.remove("main__size");
+          adminMain.classList.remove("main__size");
+        }
+      });
+
+      if (adminAlertClose)
+        adminAlertClose.addEventListener("click", () => {
+          if (adminAlertWrapper) adminAlertWrapper.style.display = "none";
+        });
+    </script>
+  </body>
+</html>

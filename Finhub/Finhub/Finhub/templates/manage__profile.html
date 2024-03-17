@@ -1,0 +1,138 @@
+{% extends "profile.html" %} {% block profile_content%}
+<div class="profile__card">
+  <div class="profile__user__password__manager user__details__manager">
+    <p class="page__title">Update User Details</p>
+    <form action="/update-user-details" method="post">
+      <div class="grid__50">
+        <div class="grid__col">
+          <div class="form__group">
+            <label for="email"
+              >Email Address <span class="required">*</span></label
+            >
+            <input
+              value="{{user.email}}"
+              disabled
+              type="text"
+              name="first_name"
+              id="email"
+              placeholder="John"
+            />
+          </div>
+          <div class="form__group">
+            <label for="email"
+              >Student Number <span class="required">*</span></label
+            >
+            <input
+              value="{{user_profile.student_number}}"
+              disabled
+              type="text"
+              name="first_name"
+              id="email"
+              placeholder="John"
+            />
+          </div>
+          <div class="form__group">
+            <label for="first_name"
+              >First name <span class="required">*</span></label
+            >
+            <input
+              value="{{user.first_name}}"
+              type="text"
+              name="first_name"
+              id="first_name"
+              placeholder="John"
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="last_name"
+              >Last name <span class="required">*</span></label
+            >
+            <input
+              value="{{user.last_name}}"
+              type="text"
+              name="last_name"
+              id="last_name"
+              placeholder="Doe"
+            />
+          </div>
+        </div>
+        <div class="grid__col">
+          <div class="form__group">
+            <label for="birth_date"
+              >Date Of Birth <span class="required">*</span></label
+            >
+
+            {% if user_profile.date_of_birth %}
+            <input
+              type="text"
+              name="birth_date"
+              id="birth_date"
+              placeholder="MM/DD/YYYY"
+              value="{{user_profile.date_of_birth}}"
+            />
+            {% else %}
+            <input
+              type="text"
+              name="birth_date"
+              id="birth_date"
+              placeholder="MM/DD/YYYY"
+            />
+            {% endif %}
+          </div>
+
+          {% if user_profile.gender %}
+          <div class="form__group">
+            <label for="gender">Gender <span class="required">*</span></label>
+            <select name="gender" id="gender">
+              <option value="">Select Gender</option>
+              {% if user_profile.gender == "Male" %}
+              <option selected value="Male">Male</option>
+              <option value="Female">Female</option>
+              {% elif user_profile.gender == "Female" %}
+              <option value="Male">Male</option>
+              <option selected value="Female">Female</option>
+              {% endif %}
+            </select>
+          </div>
+          {% else %}
+          <div class="form__group">
+            <label for="gender">Gender <span class="required">*</span></label>
+            <select name="gender" id="gender">
+              <option value="" selected>Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          {% endif %} {% if user_profile.address %}
+          <div class="form__group">
+            <label for="address">Address <span class="required">*</span></label>
+            <input
+              value="{{user_profile.address}}"
+              type="text"
+              name="address"
+              id="address"
+              placeholder="123 Example City"
+            />
+          </div>
+          {% else %}
+          <div class="form__group">
+            <label for="address">Address <span class="required">*</span></label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="123 Example City"
+            />
+          </div>
+          {% endif %}
+
+          <button type="submit" class="btn__custom btn__success">
+            Save Changes <i class="fa fa-check-circle btn__icon__right"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock%}

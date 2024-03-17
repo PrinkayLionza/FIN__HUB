@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% block title%} Home {% endblock %} {% block
+content%}
+
+<div class="hero__image">
+  <!-- <img src="{{url_for('static', filename='img/banner.jpg')}}" alt="" /> -->
+  <h1>Welcome to Fin<span class="logo__span">Hub</span></h1>
+
+  {% if user.is_authenticated %}
+  <div>
+    <p class="tagline">Hello, <b>{{user.first_name}} {{user.last_name}} </b></p>
+  </div>
+  {% else %}
+  <div>
+    <p class="tagline">Hello, <b>new member</b></p>
+  </div>
+  {% endif %}
+
+  <p>
+    This is the home page of our applicant portal. Use the navigation links
+    below to explore the features.
+  </p>
+
+  <!--Follow Us-->
+  <div class="follow__us">
+    <p class="page__title">Follow us</p>
+    <div class="social__media__platform">
+      <a href="#">
+        <div class="social">
+          <i class="fab fa-facebook-f"></i>
+        </div>
+      </a>
+      <a href="#">
+        <div class="social">
+          <i class="fab fa-twitter"></i>
+        </div>
+      </a>
+      <a href="#">
+        <div class="social">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </a>
+      <a href="#">
+        <div class="social">
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+  <!--Register-->
+  <div class="jumbotron__action">
+    {% if not user.is_authenticated %}
+    <a class="btn__custom btn__primary" href="/register"
+      >Create Account <i class="far fa-user btn__icon__right"></i
+    ></a>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

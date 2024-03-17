@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title%} My Applications {% endblock %} {%
+block content%}
+<div class="my_application_wrapper">
+  <p class="page__title">My Applications</p>
+
+  <div class="my_applications__content">
+    {% if user.applications %} {% for app in user.applications %} {% if
+    app.is_submitted and not app.is_successful %}
+    <div class="my_application_card">
+      <div class="application__details">
+        <p class="application__ref">#<b>72678</b></p>
+        <p class="application__status pending">
+          Status : {{app.application_status}}
+        </p>
+      </div>
+      <a
+        href="/application-tracking/{{app.id}}"
+        class="btn__custom btn__sm btn__dark"
+        >Track Application</a
+      >
+    </div>
+    {% endif %} {% if app.is_successful and app.is_submitted and app.on_review
+    %}
+    <div class="my_application_card">
+      <div class="application__details">
+        <p class="application__ref">#<b>72678</b></p>
+        <p class="application__status success__status">
+          Status : {{app.application_status}}
+        </p>
+      </div>
+      <a
+        href="/application-tracking/{{app.id}}"
+        class="btn__custom btn__sm btn__dark"
+        >Track Application</a
+      >
+    </div>
+    {% endif %} {% endfor %} {% else %}
+    <div class="custom__hr"></div>
+    <p class="no__applications">
+      You don't have any pending applications at a moment.
+    </p>
+    <div class="custom__hr"></div>
+    <a class="link__text" href="/bursaries">Apply Now</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

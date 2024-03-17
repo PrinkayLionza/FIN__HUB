@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title%} Login {% endblock %} {% block
+content%}
+<div class="form__header">
+  <div class="form__title">Login</div>
+  <p>Please provide your login credentials to login.</p>
+</div>
+<form method="post">
+  <div class="form__group">
+    <label for="email">Email <span class="required">*</span></label>
+    <input
+      type="email"
+      placeholder="email@example.com"
+      id="email"
+      name="email"
+      required
+    />
+  </div>
+
+  <div class="form__group">
+    <label for="password">Password <span class="required">*</span></label>
+    <input
+      type="password"
+      placeholder="At Least 6 or more char(s)"
+      id="password"
+      name="password"
+      required
+    />
+  </div>
+
+  <button type="submit" class="btn__custom btn__primary">
+    Login <i class="fa fa-sign-in-alt btn__icon__right"></i>
+  </button>
+
+  <p class="form__link__text">
+    Not a member ? <a href="/register">Register</a>
+  </p>
+</form>
+{% endblock %}

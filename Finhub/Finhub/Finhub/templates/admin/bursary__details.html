@@ -1,0 +1,32 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %}Bursary
+Details{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper m__0">
+  <div class="dashboard__content m__0">
+    <p class="page__title tagline">Bursary Details</p>
+    <div class="custom__hr"></div>
+    <div class="tab__group">
+      <p class="tab__label">Reference No</p>
+      <p class="tab__value">: #{{bursary.reference_number}}</p>
+    </div>
+    <div class="tab__group">
+      <p class="tab__label">Title</p>
+      <p class="tab__value">: {{bursary.title}}</p>
+    </div>
+    <div class="tab__group">
+      <p class="tab__label">Closing Date</p>
+      <p class="tab__value">: {{bursary.closing_date.strftime('%Y-%m-%d')}}</p>
+    </div>
+    <div class="tab__group">
+      <p class="tab__label">No Of Applicants</p>
+      <p class="tab__value">
+        : <b>{{bursary.number_of_applicants}}</b> applicants applied for this
+        bursary
+      </p>
+    </div>
+    <div class="tab__group">
+      <p class="tab__label">Description</p>
+      <p class="tab__value">: {{bursary.description}}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

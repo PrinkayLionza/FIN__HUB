@@ -1,0 +1,44 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %}Finhub User
+Details{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">{{user.first_name}} {{user.last_name}}'s Details</p>
+  <div class="custom__hr"></div>
+
+  <div class="dashboard__content m__0">
+    <p class="tagline">Profile Details</p>
+    <div class="tab__group">
+      <p class="tab__label">Student No</p>
+      <p class="tab__label">: {{profile.student_number}}</p>
+    </div>
+    <div class="tab__group">
+      <p class="tab__label">Date Of Birth</p>
+      <p class="tab__label">: {{profile.date_of_birth}}</p>
+    </div>
+
+    {% if profile.address %}
+    <div class="tab__group">
+      <p class="tab__label">Address</p>
+      <p class="tab__label">: {{profile.address}}</p>
+    </div>
+    {% else %}
+    <div class="tab__group">
+      <p class="tab__label">Address</p>
+      <p class="tab__label">: N/A</p>
+    </div>
+
+    {% endif %} {% if profile.gender %}
+    <div class="tab__group">
+      <p class="tab__label">Gender</p>
+      <p class="tab__label">: {{profile.gender}}</p>
+    </div>
+    {% else %}
+    <div class="tab__group">
+      <p class="tab__label">Gender</p>
+      <p class="tab__label">: N/A</p>
+    </div>
+
+    {% endif %}
+    <div class="custom__hr"></div>
+  </div>
+</div>
+{% endblock %}

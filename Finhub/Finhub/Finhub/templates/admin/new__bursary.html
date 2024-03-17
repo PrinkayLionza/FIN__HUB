@@ -1,0 +1,82 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %}Manage
+Bursaries{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Hello Admin!</p>
+
+  <div class="dashboard__content">
+    <p class="page__title">New Bursary</p>
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="form__group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          placeholder="Computer Science Bursary"
+          name="title"
+          id="title"
+          required
+        />
+      </div>
+      <div class="form__group">
+        <label for="company">Company</label>
+        <input
+          required
+          type="text"
+          placeholder="Example PTY (LTD)"
+          name="company"
+          id="company"
+        />
+      </div>
+      <div class="form__group">
+        <label for="company_logo">Company Logo</label>
+        <input type="file" required name="company_logo" id="company_logo" />
+      </div>
+      <div class="form__group">
+        <label for="closing_date">Closing Date</label>
+        <input
+          type="text"
+          required
+          placeholder="MM/DD/YYYY"
+          name="closing_date"
+          id="closing_date"
+        />
+      </div>
+      <div class="form__group__checkbox">
+        <p class="page__title">Choose the Requirements</p>
+        <div class="checkbox__list">
+          <div class="checkbox__wrapper">
+            <input type="checkbox" name="id_copy" id="id_copy" />
+            <label for="id_copy">Copy Of Identity Document</label>
+          </div>
+          <div class="checkbox__wrapper">
+            <input type="checkbox" name="matric" id="matric" />
+            <label for="matric">Copy Of Matric Certificate</label>
+          </div>
+          <div class="checkbox__wrapper">
+            <input type="checkbox" name="academic" id="academic" />
+            <label for="academic">Copy Of Academic Transcript</label>
+          </div>
+          <div class="checkbox__wrapper">
+            <input type="checkbox" name="affidavit" id="affidavit" />
+            <label for="affidavit">Copy Of Unemployment Affidavit</label>
+          </div>
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="description">Description</label>
+        <textarea
+          name="description"
+          id="description"
+          required
+          placeholder="Write description here.."
+        ></textarea>
+      </div>
+      <div class="form__group">
+        <button type="submit" class="btn__custom btn__success">
+          Post Bursary
+          <i class="fa fa-save btn__icon__right"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block title%} Register {% endblock %} {% block
+content%}
+<div class="form__header">
+  <div class="form__title">Register</div>
+  <p>Please fill all fields to create your account.</p>
+</div>
+<form method="post" action="/register">
+  <div class="form__group">
+    <label for="first_name">First Name <span class="required">*</span></label>
+    <input
+      type="text"
+      id="first_name"
+      placeholder="John"
+      name="firstname"
+      required
+    /><br />
+  </div>
+
+  <div class="form__group">
+    <label for="last_name">Last Name <span class="required">*</span></label>
+    <input
+      type="text"
+      id="last_name"
+      placeholder="Doe"
+      name="lastname"
+      required
+    /><br />
+  </div>
+
+  <div class="form__group">
+    <label for="email">Email <span class="required">*</span></label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="email@example.com"
+      required
+    /><br />
+  </div>
+
+  <div class="form__group">
+    <label for="password">Password <span class="required">*</span></label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="At least 6 or more char(s)"
+      required
+    /><br />
+  </div>
+  <div class="form__group">
+    <label for="cpassword"
+      >Password (Confirm)<span class="required">*</span></label
+    >
+    <input
+      type="password"
+      id="cpassword"
+      name="cpassword"
+      placeholder="Confirm Password"
+      required
+    /><br />
+  </div>
+
+  <button class="btn__custom btn__primary" type="submit">
+    Register <i class="far fa-user btn__icon__right"></i>
+  </button>
+  <p class="form__link__text">Already a member ? <a href="/login">Login</a></p>
+</form>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %} Application
+Details{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Application Details</p>
+
+  <div class="custom__hr"></div>
+  <div class="dashboard__content">
+    <div class="applicant__details">
+      <p class="page__title mb__2 tagline">Applicant Details</p>
+      <div class="tab__group">
+        <p class="tab__label"><b>Email</b></p>
+        <p class="tab__value">: {{application_user.email}}</p>
+      </div>
+      <div class="tab__group">
+        <p class="tab__label"><b>First name</b></p>
+        <p class="tab__value">: {{application_user.first_name}}</p>
+      </div>
+      <div class="tab__group">
+        <p class="tab__label"><b>Last name</b></p>
+        <p class="tab__value">: {{application_user.last_name}}</p>
+      </div>
+      <div class="tab__group">
+        <p class="tab__label"><b>Date Of Birth</b></p>
+        <p class="tab__value">: {{application_profile.date_of_birth}}</p>
+      </div>
+    </div>
+    <div class="custom__hr"></div>
+    <p class="page__title mb__2 tagline">Bursary Information</p>
+    <div class="tab__group">
+      <p class="tab__label"><b>Reference No</b></p>
+      <p class="tab__value">: #{{application.app_reference_number}}</p>
+    </div>
+    <div class="tab__group">
+      <p class="tab__label"><b>Bursary Title</b></p>
+      <p class="tab__value">: {{bursary.title}}</p>
+    </div>
+    <div class="bursary__requirements">
+      <p class="page__title">Bursary Requirements</p>
+
+      <ul>
+        {% if bursary.certified_id_required %}
+        <li>Certified ID Copy</li>
+        {% endif %} {% if bursary.matric_required %}
+        <li>Matric Certficate</li>
+        {% endif %} {% if bursary.academic_required %}
+        <li>Academic Transcript</li>
+        {% endif %} {% if bursary.unemployment_affidavit %}
+        <li>Unemplyment Affidavit</li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="custom__hr"></div>
+    <p class="page__title mb__2 tagline">Applicant Cover Letter</p>
+    <div class="applicant__cover__letter">
+      <p>{{application.cover_letter}}</p>
+    </div>
+    <div class="custom__hr"></div>
+    <p class="page__title mb__2 tagline">Uploaded Documents</p>
+    <div class="bursary__table__wrapper">
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th>Identity Document</th>
+
+            <th>Matric Certificate</th>
+
+            <th>Academic Transcript</th>
+
+            <th>Affidavit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{application.id_document}}</td>
+
+            <td>{{application.matric_certificate}}</td>
+
+            <td>{{application.academic_transcript}}</td>
+
+            <td>{{application.unemployed_affidavit}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="custom__hr"></div>
+    <div class="application__details__action">
+      {% if application.is_submitted == 1 and application.on_review == 0 %}
+      <a
+        href="/application/details/review-documents/{{application.id}}"
+        class="btn__custom btn__primary"
+        >Review Documents <i class="fa fa-eye btn__icon__right"></i
+      ></a>
+      {% endif %} {% if application.on_review == true and
+      application.is_successful == false and application.is_rejected == false %}
+      <div class="form__horizontal">
+        <a
+          href="/application/details/approve-application/{{application.id}}"
+          class="btn__custom btn__success m__0"
+          >Approve Application
+          <i class="fa fa-check-circle btn__icon__right"></i
+        ></a>
+        <a
+          href="/application/details/reject-application/{{application.id}}"
+          class="btn__custom btn__danger m__0"
+          >Reject Application <i class="fa fa-times-circle btn__icon__right"></i
+        ></a>
+      </div>
+
+      {% endif %} {% if application.is_successful == true %}
+      <p class="success__status">
+        This application was officially approved by the administrator.
+      </p>
+      {% endif %} {% if application.is_rejected == true %}
+      <p class="unsuccessful">
+        This application was officially rejected by the administrator.
+      </p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

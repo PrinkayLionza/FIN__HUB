@@ -1,0 +1,61 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %}Manage
+Bursaries{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Bursaries</p>
+
+  <div class="dashboard__content">
+    <div class="table__action">
+      <a href="/new-bursary" class="btn__custom btn__dark"
+        >New Bursary <i class="fa fa-plus btn__icon__right"></i
+      ></a>
+    </div>
+    <div class="bursary__table__wrapper">
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th>Reference No</th>
+            <th>Company</th>
+            <th>Closing Date</th>
+            <th>Posted Date</th>
+            <th>No Of Applicants</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if bursaries_list != None %} {% for bursary in bursaries_list %}
+          <tr>
+            <td><b>#</b>{{bursary.reference_number}}</td>
+            <td>{{bursary.company}}</td>
+            <td>{{bursary.closing_date.strftime('%Y-%m-%d')}}</td>
+            <td>{{bursary.posted_date.strftime('%Y-%m-%d')}}</td>
+            <td>{{bursary.number_of_applicants}}</td>
+            <td>
+              <a
+                href="/bursary/details/{{bursary.id}}"
+                class="btn__custom btn__sm btn__dark"
+              >
+                Details
+                <i class="fa fa-eye btn__icon__right"></i>
+              </a>
+              <a
+                href="/delete-bursary/{{bursary.id}}"
+                class="btn__custom btn__sm btn__danger"
+              >
+                Delete
+                <i class="fa fa-trash-can btn__icon__right"></i>
+              </a>
+            </td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="6">
+              <p>No Data Found</p>
+            </td>
+          </tr>
+          {% endfor %} {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

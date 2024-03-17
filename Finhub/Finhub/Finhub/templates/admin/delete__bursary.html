@@ -1,0 +1,21 @@
+{% extends 'admin/admin__base__template.html' %} {% block title %}Manage
+Bursaries{% endblock %} {% block admin__content %}
+<div class="dashboard__wrapper">
+  <p class="page__title">Delete Bursary</p>
+  <div class="custom__hr"></div>
+
+  <div class="dashboard__content">
+    <p>Are you sure to delete <b>"{{bursary.title}}"</b> ?</p>
+    <div class="form__horizontal">
+      <form method="post">
+        <button type="submit" class="btn__custom btn__danger">
+          Confirm Delete <i class="fa fa-trash-can btn__icon__right"></i>
+        </button>
+      </form>
+      <a href="/manage-bursary" class="btn__custom btn__dark"
+        >Cancel <i class="fa fa-times-circle btn__icon__right"></i
+      ></a>
+    </div>
+  </div>
+</div>
+{% endblock %}
